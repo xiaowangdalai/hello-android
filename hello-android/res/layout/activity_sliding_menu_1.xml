@@ -9,7 +9,7 @@
         android:id="@+id/sliding_menu_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        menu:manuRightPadding="100dp">
+        menu:manuRightPadding="80dp">
         
         <LinearLayout 
             android:layout_height="match_parent"

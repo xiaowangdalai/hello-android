@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <attr name="manuRightPadding" format="dimension" />
+    <!-- <attr name="manuRightPadding" format="dimension" /> -->
     
-    <declare-styleable name="SlidingMenuLayout">
-        <attr name="manuRightPadding" />
+    <declare-styleable name="SlidingMenu">
+        <attr name="manuRightPadding" format="dimension" />
     </declare-styleable>
     
 </resources>

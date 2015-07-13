@@ -19,7 +19,8 @@ import android.widget.ListView;
 public class SlidingMenuListActivity extends Activity {
 	
 	private static final String[] LIST_DATA = new String[] {
-		"平移侧滑菜单"
+		"平移侧滑菜单",
+		"抽屉式侧滑菜单"
 	};
 
 	@Override
@@ -39,8 +40,11 @@ public class SlidingMenuListActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				switch (position) {
 				case 0:
-					Intent it = new Intent(SlidingMenuListActivity.this, SlidingMenuActivity1.class);
-					startActivity(it);
+					startActivity(new Intent(SlidingMenuListActivity.this, SlidingMenuActivity1.class));
+					break;
+					
+				case 1:
+					startActivity(new Intent(SlidingMenuListActivity.this, SlidingMenuActivity2.class));
 					break;
 
 				default:

@@ -27,6 +27,8 @@
             android:name=".SlidingMenuListActivity" />
         
         <activity android:name=".SlidingMenuActivity1" />
+        
+        <activity android:name=".SlidingMenuActivity2" />
     </application>
 
 </manifest>
