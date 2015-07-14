@@ -3,6 +3,7 @@ package com.xwdl.hello.myview;
 import com.xwdl.hello.R;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -13,20 +14,29 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 
+/**
+ * @date 2015年7月14日
+ */
 public class SlidingMenuLayout extends HorizontalScrollView {
 
-	private int mScreenWidth;
+	protected int mScreenWidth;
 
 	/**
 	 * 单位dp
 	 */
-	private int mMenuRightPadding = 60;
+	protected int mMenuRightPadding = 60;
 
-	private int mMenuWidth;
+	protected int mMenuWidth;
 
-	private boolean init;
+	protected boolean init;
 
-	private boolean isOpen;
+	protected boolean isOpen;
+	
+	protected ViewGroup mWrapper;
+	protected View mMenu;
+	protected View mContent;
+	
+	protected WindowManager mWindowManager;
 
 	public SlidingMenuLayout(Context context) {
 		this(context, null);
@@ -35,23 +45,27 @@ public class SlidingMenuLayout extends HorizontalScrollView {
 	public SlidingMenuLayout(Context context, AttributeSet attrs,
 			int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
+		System.out.println("[[[ defStyleAttr:" + defStyleAttr);
 
-		WindowManager wm = (WindowManager) context
-				.getSystemService(Context.WINDOW_SERVICE);
-		DisplayMetrics outMetrics = new DisplayMetrics();
-		wm.getDefaultDisplay().getMetrics(outMetrics);
-		mScreenWidth = outMetrics.widthPixels;
-
+		mWindowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		getScreenWidth();
+		
 		// TypedArray ta = context.obtainStyledAttributes(attrs,
 		// R.styleable.SlidingMenu);
 		TypedArray ta = context.getTheme().obtainStyledAttributes(attrs,
-				R.styleable.SlidingMenu, defStyleAttr, 0);
+				R.styleable.SlidingMenuLayout, defStyleAttr, 0);
 		
 		mMenuRightPadding = ta.getDimensionPixelSize(
-				R.styleable.SlidingMenu_manuRightPadding, (int) TypedValue
+				R.styleable.SlidingMenuLayout_manuRightPadding, (int) TypedValue
 						.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60,
 								context.getResources().getDisplayMetrics()));
 		ta.recycle();
+	}
+	
+	protected void getScreenWidth() {
+		DisplayMetrics outMetrics = new DisplayMetrics();
+		mWindowManager.getDefaultDisplay().getMetrics(outMetrics);
+		mScreenWidth = outMetrics.widthPixels;
 	}
 
 	public SlidingMenuLayout(Context context, AttributeSet attrs) {
@@ -83,29 +97,43 @@ public class SlidingMenuLayout extends HorizontalScrollView {
 	}
 
 	@Override
+	protected void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		
+		System.out.println("[[[ configuration changed !");
+		init = false;
+		getScreenWidth();
+	}
+
+	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
 		super.onLayout(changed, l, t, r, b);
 
 		if (changed) {
 			scrollTo(mMenuWidth, 0);
 		}
+		
+		System.out.println("[[[ onLayout ! changed: " + changed);
 	}
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		if (!init) {
-			ViewGroup wrapper = (ViewGroup) this.getChildAt(0);
-			View menu = wrapper.getChildAt(0);
-			View content = wrapper.getChildAt(1);
-
-			mMenuWidth = menu.getLayoutParams().width = mScreenWidth
-					- mMenuRightPadding;
-			content.getLayoutParams().width = mScreenWidth;
-
+			measureMenu();
 			init = true;
 		}
 
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+		System.out.println("[[[ onMeasure !");
+	}
+	
+	protected void measureMenu() {
+		mWrapper = (ViewGroup) this.getChildAt(0);
+		mMenu = mWrapper.getChildAt(0);
+		mContent = mWrapper.getChildAt(1);
+		
+		mMenuWidth = mMenu.getLayoutParams().width = mScreenWidth- mMenuRightPadding;
+		mContent.getLayoutParams().width = mScreenWidth;
 	}
 
 	@Override

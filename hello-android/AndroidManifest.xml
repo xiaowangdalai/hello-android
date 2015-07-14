@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+             ><!-- android:configChanges="keyboard|keyboardHidden|orientation|screenSize" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,11 +25,14 @@
         </activity>
         
         <activity
-            android:name=".SlidingMenuListActivity" />
+            android:name=".SlidingMenuListActivity"
+             />
         
-        <activity android:name=".SlidingMenuActivity1" />
+        <activity android:name=".SlidingMenuActivity1"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
         
-        <activity android:name=".SlidingMenuActivity2" />
+        <activity android:name=".SlidingMenuActivity2"
+             />
     </application>
 
 </manifest>
