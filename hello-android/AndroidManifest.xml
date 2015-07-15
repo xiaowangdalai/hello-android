@@ -33,6 +33,9 @@
         
         <activity android:name=".SlidingMenuActivity2"
              />
+        
+        <activity android:name=".SlidingMenuActivity3"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
     </application>
 
 </manifest>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:menu="http://schemas.android.com/apk/res/com.xwdl.hello"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     >
+    
+    <com.xwdl.hello.myview.SlidingMenuLayout3
+        android:id="@+id/sliding_menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        menu:manuRightPadding="80dp"
+        >
+        
+        <LinearLayout 
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/blue">
+            
+            <LinearLayout 
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:background="@color/blue">
+                
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/TextTheme"
+                    android:text="Menu1"
+                    android:layout_marginTop="20dip"
+                    android:paddingTop="6dip"
+                    android:paddingBottom="6dip"
+                    android:minWidth="100dip" />
+                
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/TextTheme"
+                    android:text="Menu2"
+                    android:layout_marginTop="20dip"
+                    android:paddingTop="6dip"
+                    android:paddingBottom="6dip"
+                    android:minWidth="100dip" />
+                
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/TextTheme"
+                    android:text="Menu3"
+                    android:layout_marginTop="20dip"
+                    android:paddingTop="6dip"
+                    android:paddingBottom="6dip"
+                    android:minWidth="100dip" />
+                
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/TextTheme"
+                    android:text="Menu4"
+                    android:layout_marginTop="20dip"
+                    android:paddingTop="6dip"
+                    android:paddingBottom="6dip"
+                    android:minWidth="100dip" />
+                
+            </LinearLayout>
+            
+            <LinearLayout 
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                
+                <Button android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Menu"
+                    android:onClick="swapMenu"/>
+                
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/TextTheme"
+                    android:text="Content"/>
+                
+            </LinearLayout>
+            
+        </LinearLayout>
+        
+    </com.xwdl.hello.myview.SlidingMenuLayout3>
+    
+
+</LinearLayout>

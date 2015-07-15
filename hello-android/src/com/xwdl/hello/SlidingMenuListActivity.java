@@ -20,7 +20,8 @@ public class SlidingMenuListActivity extends Activity {
 	
 	private static final String[] LIST_DATA = new String[] {
 		"平移侧滑菜单",
-		"抽屉式侧滑菜单"
+		"抽屉式侧滑菜单",
+		"QQ5.0"
 	};
 
 	@Override
@@ -46,6 +47,9 @@ public class SlidingMenuListActivity extends Activity {
 				case 1:
 					startActivity(new Intent(SlidingMenuListActivity.this, SlidingMenuActivity2.class));
 					break;
+					
+				case 2:
+					startActivity(new Intent(SlidingMenuListActivity.this, SlidingMenuActivity3.class));
 
 				default:
 					break;

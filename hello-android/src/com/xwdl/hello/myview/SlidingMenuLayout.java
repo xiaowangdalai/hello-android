@@ -103,6 +103,8 @@ public class SlidingMenuLayout extends HorizontalScrollView {
 		System.out.println("[[[ configuration changed !");
 		init = false;
 		getScreenWidth();
+		
+		
 	}
 
 	@Override
@@ -111,6 +113,7 @@ public class SlidingMenuLayout extends HorizontalScrollView {
 
 		if (changed) {
 			scrollTo(mMenuWidth, 0);
+			isOpen = false;
 		}
 		
 		System.out.println("[[[ onLayout ! changed: " + changed);
