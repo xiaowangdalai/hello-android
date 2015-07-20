@@ -36,6 +36,15 @@
         
         <activity android:name=".SlidingMenuActivity3"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+        
+        <activity
+            android:name=".PropertyAnimationListActivity"
+             />
+        
+        <activity
+            android:name=".Moji3Activity"
+             />
+        
     </application>
 
 </manifest>
