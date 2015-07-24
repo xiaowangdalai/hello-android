@@ -1,4 +1,7 @@
-package com.xwdl.hello;
+package com.xwdl.hello.animation.property;
+
+import com.xwdl.hello.R;
+import com.xwdl.hello.R.layout;
 
 import android.app.Activity;
 import android.os.Bundle;

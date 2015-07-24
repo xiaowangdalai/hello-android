@@ -38,12 +38,14 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
         
         <activity
-            android:name=".PropertyAnimationListActivity"
+            android:name="com.xwdl.hello.animation.property.PropertyAnimListActivity"
              />
         
         <activity
-            android:name=".Moji3Activity"
-             />
+            android:name="com.xwdl.hello.animation.property.BasePropertyAnimActivity" />
+        
+        <activity
+            android:name="com.xwdl.hello.animation.property.Moji3Activity" />
         
     </application>
 

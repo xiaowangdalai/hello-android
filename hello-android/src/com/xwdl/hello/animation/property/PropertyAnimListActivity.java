@@ -1,4 +1,4 @@
-package com.xwdl.hello;
+package com.xwdl.hello.animation.property;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,9 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-public class PropertyAnimationListActivity extends Activity {
+import com.xwdl.hello.R;
+
+public class PropertyAnimListActivity extends Activity {
 	
 	private static final String[] LIST_DATA = new String[] {
+		"基本属性动画API-11",
 		"墨迹天气3.0"
 	};
 
@@ -32,7 +35,12 @@ public class PropertyAnimationListActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
 				switch (position) {
 				case 0:
-					startActivity(new Intent(PropertyAnimationListActivity.this,
+					startActivity(new Intent(PropertyAnimListActivity.this,
+							BasePropertyAnimActivity.class));
+					break;
+					
+				case 1:
+					startActivity(new Intent(PropertyAnimListActivity.this,
 							Moji3Activity.class));
 					break;
 

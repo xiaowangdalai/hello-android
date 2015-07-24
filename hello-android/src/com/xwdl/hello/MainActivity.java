@@ -1,5 +1,7 @@
 package com.xwdl.hello;
 
+import com.xwdl.hello.animation.property.PropertyAnimListActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +41,7 @@ public class MainActivity extends Activity {
 					break;
 					
 				case 1:
-					startActivity(new Intent(MainActivity.this, PropertyAnimationListActivity.class));
+					startActivity(new Intent(MainActivity.this, PropertyAnimListActivity.class));
 					break;
 
 				default:
