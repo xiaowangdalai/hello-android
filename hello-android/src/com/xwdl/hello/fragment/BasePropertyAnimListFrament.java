@@ -15,10 +15,22 @@ import android.widget.ListView;
 
 import com.xwdl.hello.R;
 
+/**
+ * Fragment使用注意：
+ * 1、不要重写构造函数
+ * 2、传参数的话用setArgument
+ * 3、replace相当于move+add
+ * 4、activity oncreate中添加要注意重复添加的问题
+ * 5、尽量不要再oncreate， ui操作，onpostresume，
+ * 
+ *
+ * @date 2015年7月28日
+ */
 public class BasePropertyAnimListFrament extends Fragment {
 	
 	private static final String[] LIST_DATA = new String[] {
-		"Object Animation"
+		"ObjectAnimator",
+		"ValueAnimator"
 	};
 	
 	private Context mContext;
@@ -58,6 +70,14 @@ public class BasePropertyAnimListFrament extends Fragment {
 //					ftObjectAnim.add(R.id.content, oaf);
 					ftObjectAnim.addToBackStack(null);
 					ftObjectAnim.commit();
+					break;
+					
+				case 1:
+					FragmentTransaction ftValueAnim = fm.beginTransaction();
+					ValueAnimFragment vaf = ValueAnimFragment.newInstance();
+					ftValueAnim.replace(R.id.content, vaf);
+					ftValueAnim.addToBackStack(null);
+					ftValueAnim.commit();
 					break;
 
 				default:

@@ -3,8 +3,10 @@ package com.xwdl.hello.fragment;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
@@ -14,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.xwdl.hello.R;
 
 public class ObjectAnimFragment extends Fragment {
@@ -32,6 +33,7 @@ public class ObjectAnimFragment extends Fragment {
 		mContext = getActivity().getApplicationContext();
 	}
 	
+	@SuppressLint("NewApi")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_object_anim, container, false);
@@ -67,6 +69,26 @@ public class ObjectAnimFragment extends Fragment {
 						image2.setScaleY(value);
 					}
 				});
+			}
+		});
+		
+		/*
+		 * 组合动画的实现方式：
+		 * 1、可以使用animation set
+		 * 2、可以addUpdateListener
+		 * 3、可以使用PropertyValuesHolder
+		 * 4、api12可以使用myView.animate().x(50f).y(100f);
+		 */
+		// 这段代码和上面的代码是一个意思
+		final ImageView image3 = (ImageView) v.findViewById(R.id.image3);
+		image3.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("alpha", 1.0f, 0.0f);
+				PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 0.0f);
+				PropertyValuesHolder pvhZ = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 0.0f);
+				ObjectAnimator.ofPropertyValuesHolder(image3, pvhX, pvhY, pvhZ).setDuration(1000).start();
 			}
 		});
 		
