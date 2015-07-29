@@ -1,10 +1,13 @@
 package com.xwdl.hello.fragment;
 
 import com.xwdl.hello.R;
+
+import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.BoringLayout.Metrics;
@@ -14,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 
 public class ValueAnimFragment extends Fragment {
@@ -65,8 +69,35 @@ public class ValueAnimFragment extends Fragment {
 		Button btn2 = (Button) v.findViewById(R.id.btn2);
 		btn2.setOnClickListener(new View.OnClickListener() {
 			
+			@SuppressLint("NewApi")
 			@Override
 			public void onClick(View v) {
+				ValueAnimator anim = ValueAnimator.ofObject(new TypeEvaluator<PointF>() {
+
+					// fraction = t / duration
+					@Override
+					public PointF evaluate(float fraction, PointF startValue, PointF endValue) {
+						PointF point = new PointF();
+						point.x = 120 * fraction * 3;
+						point.y = 0.5f * 200 * (fraction * 3) * (fraction * 3);
+						return point;
+					}
+					
+				}, new PointF(0, 0));
+				
+				anim.setDuration(3000);
+				anim.setInterpolator(new LinearInterpolator());
+				anim.addUpdateListener(new AnimatorUpdateListener() {
+					
+					@Override
+					public void onAnimationUpdate(ValueAnimator animation) {
+						PointF point = (PointF) animation.getAnimatedValue();
+						ball.setX(point.x);
+						ball.setY(point.y);
+					}
+				});
+				
+				anim.start();
 			}
 		});
 		
