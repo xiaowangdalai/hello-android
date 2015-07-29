@@ -1,4 +1,4 @@
-package com.xwdl.hello.fragment;
+package com.xwdl.hello.fragment.anim;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
@@ -77,7 +77,7 @@ public class ObjectAnimFragment extends Fragment {
 		 * 1、可以使用animation set
 		 * 2、可以addUpdateListener
 		 * 3、可以使用PropertyValuesHolder
-		 * 4、api12可以使用myView.animate().x(50f).y(100f);
+		 * 4、api12可以使用myView.animate().x(50f).y(100f);(高效)
 		 */
 		// 这段代码和上面的代码是一个意思
 		final ImageView image3 = (ImageView) v.findViewById(R.id.image3);

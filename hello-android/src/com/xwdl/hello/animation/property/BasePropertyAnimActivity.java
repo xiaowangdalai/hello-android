@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.xwdl.hello.R;
-import com.xwdl.hello.fragment.BasePropertyAnimListFrament;
+import com.xwdl.hello.fragment.anim.BasePropertyAnimListFrament;
 
 /**
  * 属性动画（Property Animation）：Android 3.0（API 11）以上提供的动画。

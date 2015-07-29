@@ -1,7 +1,8 @@
-package com.xwdl.hello.fragment;
+package com.xwdl.hello.fragment.anim;
 
-import com.xwdl.hello.R;
-
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
@@ -10,7 +11,6 @@ import android.content.Context;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.BoringLayout.Metrics;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+
+import com.xwdl.hello.R;
 
 public class ValueAnimFragment extends Fragment {
 	
@@ -78,7 +80,7 @@ public class ValueAnimFragment extends Fragment {
 					@Override
 					public PointF evaluate(float fraction, PointF startValue, PointF endValue) {
 						PointF point = new PointF();
-						point.x = 120 * fraction * 3;
+						point.x = 100 * fraction * 3;
 						point.y = 0.5f * 200 * (fraction * 3) * (fraction * 3);
 						return point;
 					}
@@ -94,6 +96,29 @@ public class ValueAnimFragment extends Fragment {
 						PointF point = (PointF) animation.getAnimatedValue();
 						ball.setX(point.x);
 						ball.setY(point.y);
+					}
+				});
+				
+				anim.start();
+			}
+		});
+		
+		// 监听动画事件,另：方法cancel()和end()
+		Button btn3 = (Button) v.findViewById(R.id.btn3);
+		btn3.setOnClickListener(new View.OnClickListener() {
+			
+			@SuppressLint("NewApi")
+			@Override
+			public void onClick(View v) {
+				ObjectAnimator anim = ObjectAnimator.ofFloat(ball, "alpha", 1.0f, 0.0f);
+				anim.setDuration(1000);
+				anim.addListener(new AnimatorListenerAdapter() {
+					@Override
+					public void onAnimationEnd(Animator animation) {
+						ViewGroup parent = (ViewGroup) ball.getParent();
+						if (parent != null) {
+							parent.removeView(ball);
+						}
 					}
 				});
 				

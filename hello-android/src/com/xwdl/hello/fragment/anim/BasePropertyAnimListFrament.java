@@ -1,4 +1,4 @@
-package com.xwdl.hello.fragment;
+package com.xwdl.hello.fragment.anim;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -30,7 +30,8 @@ public class BasePropertyAnimListFrament extends Fragment {
 	
 	private static final String[] LIST_DATA = new String[] {
 		"ObjectAnimator",
-		"ValueAnimator"
+		"ValueAnimator",
+		"AnimatorSet"
 	};
 	
 	private Context mContext;
@@ -78,6 +79,14 @@ public class BasePropertyAnimListFrament extends Fragment {
 					ftValueAnim.replace(R.id.content, vaf);
 					ftValueAnim.addToBackStack(null);
 					ftValueAnim.commit();
+					break;
+					
+				case 2:
+					FragmentTransaction ftAnimSet = fm.beginTransaction();
+					AnimSetFragment asf = AnimSetFragment.newInstance();
+					ftAnimSet.replace(R.id.content, asf);
+					ftAnimSet.addToBackStack(null);
+					ftAnimSet.commit();
 					break;
 
 				default:
