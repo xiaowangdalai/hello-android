@@ -23,7 +23,55 @@ import com.xwdl.hello.R;
  * 4、activity oncreate中添加要注意重复添加的问题
  * 5、尽量不要再oncreate， ui操作，onpostresume，
  * 
+ * 
+ * 	<?xml version="1.0" encoding="utf-8"?>
+	<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:duration="1000"
+    	android:propertyName="scaleX"
+    	android:valueFrom="1.0"
+    	android:valueTo="2.0"
+    	android:valueType="floatType" >
+ *	</objectAnimator>
+ * 
+ * 	public void scaleX(View view) {
+		// 加载动画
+		Animator anim = AnimatorInflater.loadAnimator(this, R.animator.scalex);
+		anim.setTarget(mMv);
+		anim.start();
+	}
  *
+ *	<?xml version="1.0" encoding="utf-8"?>
+	<set xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:ordering="together" >
+
+    	<objectAnimator
+        	android:duration="1000"
+        	android:propertyName="scaleX"
+        	android:valueFrom="1"
+        	android:valueTo="0.5" >
+    	</objectAnimator>
+    	<objectAnimator
+        	android:duration="1000"
+        	android:propertyName="scaleY"
+        	android:valueFrom="1"
+        	android:valueTo="0.5" >
+    	</objectAnimator>
+
+	</set>
+ *	set标签，有一个orderring属性设置为together,【还有另一个值：sequentially（表示一个接一个执行）】。
+ *
+ *	就是缩放、反转等都有中心点或者轴，默认中心缩放，和中间对称线为反转线，改变横向，纵向缩小以左上角为中心点：
+ *		// 加载动画
+		Animator anim = AnimatorInflater.loadAnimator(this, R.animator.scale);
+		mMv.setPivotX(0);
+		mMv.setPivotY(0);
+		//显示的调用invalidate
+		mMv.invalidate();
+		anim.setTarget(mMv);
+		anim.start();
+ * 
+ * 
+ * 
  * @date 2015年7月28日
  */
 public class BasePropertyAnimListFrament extends Fragment {
@@ -31,7 +79,8 @@ public class BasePropertyAnimListFrament extends Fragment {
 	private static final String[] LIST_DATA = new String[] {
 		"ObjectAnimator",
 		"ValueAnimator",
-		"AnimatorSet"
+		"AnimatorSet",
+		"布局动画"
 	};
 	
 	private Context mContext;
