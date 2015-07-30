@@ -137,6 +137,14 @@ public class BasePropertyAnimListFrament extends Fragment {
 					ftAnimSet.addToBackStack(null);
 					ftAnimSet.commit();
 					break;
+					
+				case 3:
+					FragmentTransaction ftLayoutAnim = fm.beginTransaction();
+					LayoutAnimFragment laf = LayoutAnimFragment.newInstance();
+					ftLayoutAnim.replace(R.id.content, laf);
+					ftLayoutAnim.addToBackStack(null);
+					ftLayoutAnim.commit();
+					break;
 
 				default:
 					break;
