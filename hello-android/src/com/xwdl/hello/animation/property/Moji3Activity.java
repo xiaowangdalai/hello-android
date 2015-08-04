@@ -87,7 +87,6 @@ public class Moji3Activity extends FragmentActivity implements OnPageChangeListe
 
 			@Override
 			public void onGlobalLayout() {
-				// TODO Auto-generated method stub
 				int h1 = centerLayout.getTop();
 				int h2 = centerLayout.getBottom();
 				DensityUtil densityUtil = new DensityUtil(Moji3Activity.this);
@@ -131,7 +130,6 @@ public class Moji3Activity extends FragmentActivity implements OnPageChangeListe
 
 		@Override
 		public int getCount() {
-			// TODO Auto-generated method stub
 			return pagers.size();
 		}
 
@@ -142,10 +140,8 @@ public class Moji3Activity extends FragmentActivity implements OnPageChangeListe
 
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
-
 			container.addView(pagers.get(position));
 			return pagers.get(position);
-
 		}
 
 		@Override
@@ -157,20 +153,15 @@ public class Moji3Activity extends FragmentActivity implements OnPageChangeListe
 
 	@Override
 	public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void onPageSelected(int position) {
-		// TODO Auto-generated method stub
 		animal(position);
 	}
 
 	@Override
 	public void onPageScrollStateChanged(int state) {
-		// TODO Auto-generated method stub
-
 	}
 
 	private boolean flag3 = false;
@@ -224,8 +215,8 @@ public class Moji3Activity extends FragmentActivity implements OnPageChangeListe
 			t2_next.startAnimation(animationBottom);
 
 			break;
+			
 		case 2:
-
 			t3_icon6.setImageResource(R.drawable.t3_frame_animation);
 			t3_icon6_animationDrawable = (AnimationDrawable) t3_icon6.getDrawable();
 
@@ -286,6 +277,7 @@ public class Moji3Activity extends FragmentActivity implements OnPageChangeListe
 			t3_fixed.startAnimation(animationTop);
 			t3_next.startAnimation(animationBottom);
 			break;
+			
 		case 3:
 			flag3 = false;
 			if (t3_icon2.getAnimation() != null) {

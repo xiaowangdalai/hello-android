@@ -29,7 +29,7 @@ import com.xwdl.hello.verticalviewpager.PagerAdapter;
 import com.xwdl.hello.verticalviewpager.ViewPager;
 import com.xwdl.hello.verticalviewpager.ViewPager.OnPageChangeListener;
 
-public class PropertyAnimActivity extends FragmentActivity implements OnPageChangeListener {
+public class Moji3_2Activity extends FragmentActivity implements OnPageChangeListener {
 
 	private ViewPager mPager;
 	private VerticalFragementPagerAdapter mAdapter;
@@ -59,7 +59,7 @@ public class PropertyAnimActivity extends FragmentActivity implements OnPageChan
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_moji3);
 
 		mPager = (ViewPager) findViewById(R.id.pager);
 
@@ -90,15 +90,16 @@ public class PropertyAnimActivity extends FragmentActivity implements OnPageChan
 
 			@Override
 			public void onGlobalLayout() {
-				// TODO Auto-generated method stub
 				int h1 = centerLayout.getTop();
 				int h2 = centerLayout.getBottom();
-				DensityUtil densityUtil = new DensityUtil(PropertyAnimActivity.this);
+				DensityUtil densityUtil = new DensityUtil(Moji3_2Activity.this);
 				int w = densityUtil.getScreenWidth();
 
 				fx1 = t3_icon2.getTop() + t3_icon2.getHeight();
-				fy1 = -t3_icon2.getTop() - t3_icon2.getHeight();
+				System.out.println("[[[ top:" + t3_icon2.getTop() + ", height:" + t3_icon2.getHeight());
 				tx1 = -t3_icon2.getWidth() - t3_icon2.getLeft();
+				
+				fy1 = -t3_icon2.getTop() - t3_icon2.getHeight();
 				ty1 = t3_icon2.getTop() + t3_icon2.getLeft() + t3_icon2.getWidth();
 
 				fx2 = t3_icon3.getTop() + t3_icon3.getHeight();
@@ -134,7 +135,6 @@ public class PropertyAnimActivity extends FragmentActivity implements OnPageChan
 
 		@Override
 		public int getCount() {
-			// TODO Auto-generated method stub
 			return pagers.size();
 		}
 
@@ -145,10 +145,8 @@ public class PropertyAnimActivity extends FragmentActivity implements OnPageChan
 
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
-
 			container.addView(pagers.get(position));
 			return pagers.get(position);
-
 		}
 
 		@Override
@@ -160,20 +158,15 @@ public class PropertyAnimActivity extends FragmentActivity implements OnPageChan
 
 	@Override
 	public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void onPageSelected(int position) {
-		// TODO Auto-generated method stub
 		animal(position);
 	}
 
 	@Override
 	public void onPageScrollStateChanged(int state) {
-		// TODO Auto-generated method stub
-
 	}
 
 	private boolean flag3 = false;
@@ -198,7 +191,7 @@ public class PropertyAnimActivity extends FragmentActivity implements OnPageChan
 			t1_icon1_animationDrawable = (AnimationDrawable) t1_icon1.getDrawable();
 			t1_icon1_animationDrawable.start();
 
-			animation1 = (AnimatorSet) AnimatorInflater.loadAnimator(PropertyAnimActivity.this,
+			animation1 = (AnimatorSet) AnimatorInflater.loadAnimator(Moji3_2Activity.this,
 					R.animator.tutorail_rotate);
 			LinearInterpolator lin = new LinearInterpolator();
 			animation1.setInterpolator(lin);
@@ -207,13 +200,13 @@ public class PropertyAnimActivity extends FragmentActivity implements OnPageChan
 			animation1.setTarget(t1_icon2);
 			animation1.start();
 
-			animationTop = (AnimatorSet) AnimatorInflater.loadAnimator(PropertyAnimActivity.this,
+			animationTop = (AnimatorSet) AnimatorInflater.loadAnimator(Moji3_2Activity.this,
 					R.animator.tutorail_scalate_top);
 			animationTop.setTarget(t1_fixed);
 			animationTop.start();
 
-			animationBottom = (AnimatorSet) AnimatorInflater.loadAnimator(
-					PropertyAnimActivity.this, R.animator.tutorail_bottom);
+			animationBottom = (AnimatorSet) AnimatorInflater.loadAnimator(Moji3_2Activity.this,
+					R.animator.tutorail_bottom);
 			animationBottom.setTarget(t1_next);
 			animationBottom.start();
 
@@ -296,11 +289,9 @@ public class PropertyAnimActivity extends FragmentActivity implements OnPageChan
 
 			flag3 = true;
 
-			// �ӳ�1��
 			new Handler() {
 				@Override
 				public void dispatchMessage(Message msg) {
-					// TODO Auto-generated method stub
 					if (flag3)
 						super.dispatchMessage(msg);
 				}
@@ -321,10 +312,9 @@ public class PropertyAnimActivity extends FragmentActivity implements OnPageChan
 						transAnimation5.start();
 
 						t3_icon6_animationDrawable.start();
-
 					}
 				};
-			}.sendEmptyMessageDelayed(1, 1000);// 1��
+			}.sendEmptyMessageDelayed(1, 1000);
 
 			// t3_fixed.startAnimation(animationTop);
 

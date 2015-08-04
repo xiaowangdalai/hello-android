@@ -47,6 +47,9 @@
         <activity
             android:name="com.xwdl.hello.animation.property.Moji3Activity" />
         
+        <activity
+            android:name="com.xwdl.hello.animation.property.Moji3_2Activity" />
+        
     </application>
 
 </manifest>

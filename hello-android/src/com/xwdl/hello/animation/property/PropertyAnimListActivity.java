@@ -41,7 +41,8 @@ public class PropertyAnimListActivity extends Activity {
 					
 				case 1:
 					startActivity(new Intent(PropertyAnimListActivity.this,
-							Moji3Activity.class));
+							Moji3_2Activity.class));
+//							Moji3Activity.class));
 					break;
 
 				default:
