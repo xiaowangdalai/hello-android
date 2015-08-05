@@ -50,6 +50,10 @@
         <activity
             android:name="com.xwdl.hello.animation.property.Moji3_2Activity" />
         
+        <activity android:name="com.xwdl.hello.lbs.LbsListActivity" />
+        
+        <activity android:name="com.xwdl.hello.lbs.BaiduSdkActivity" />
+                
     </application>
 
 </manifest>

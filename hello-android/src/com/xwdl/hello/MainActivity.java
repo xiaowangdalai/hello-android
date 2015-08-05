@@ -1,6 +1,7 @@
 package com.xwdl.hello;
 
 import com.xwdl.hello.animation.property.PropertyAnimListActivity;
+import com.xwdl.hello.lbs.LbsListActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,7 +15,8 @@ public class MainActivity extends Activity {
 	
 	private static final String[] LIST_DATA = new String[] {
 		"侧滑菜单",
-		"属性动画"
+		"属性动画",
+		"地图"
 	};
 
 	@Override
@@ -42,6 +44,10 @@ public class MainActivity extends Activity {
 					
 				case 1:
 					startActivity(new Intent(MainActivity.this, PropertyAnimListActivity.class));
+					break;
+					
+				case 2:
+					startActivity(new Intent(MainActivity.this, LbsListActivity.class));
 					break;
 
 				default:
