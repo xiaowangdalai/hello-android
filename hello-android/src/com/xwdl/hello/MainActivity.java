@@ -1,7 +1,7 @@
 package com.xwdl.hello;
 
 import com.xwdl.hello.animation.property.PropertyAnimListActivity;
-import com.xwdl.hello.lbs.LbsListActivity;
+import com.xwdl.hello.lbs.LbsActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
 					break;
 					
 				case 2:
-					startActivity(new Intent(MainActivity.this, LbsListActivity.class));
+					startActivity(new Intent(MainActivity.this, LbsActivity.class));
 					break;
 
 				default:
