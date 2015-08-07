@@ -43,7 +43,6 @@ public class BaiduLocationFragment extends Fragment {
 		mLocationClient.registerLocationListener(myListener); // 注册监听函数
 
 		initLocation();
-		mLocationClient.start();
 	}
 
 	@Override
@@ -231,8 +230,6 @@ public class BaiduLocationFragment extends Fragment {
 			if (mTxtLoc != null) {
 				mTxtLoc.setText(sb.toString());
 			}
-
-//			mLocationClient.stop();
 		}
 	}
 }

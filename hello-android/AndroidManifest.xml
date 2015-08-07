@@ -70,6 +70,7 @@
         <activity android:name="com.xwdl.hello.animation.property.Moji3_2Activity" />
         <activity android:name="com.xwdl.hello.lbs.LbsActivity" />
         <activity android:name="com.xwdl.hello.lbs.BaiduLbsActivity" />
+        <activity android:name="com.xwdl.hello.datastructure.DataStructureListActivity" />
 
         <service
             android:name="com.baidu.location.f"
