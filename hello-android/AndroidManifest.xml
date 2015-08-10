@@ -71,6 +71,7 @@
         <activity android:name="com.xwdl.hello.lbs.LbsActivity" />
         <activity android:name="com.xwdl.hello.lbs.BaiduLbsActivity" />
         <activity android:name="com.xwdl.hello.datastructure.DataStructureListActivity" />
+        <activity android:name="com.xwdl.hello.dialog.DialogActivity" />
 
         <service
             android:name="com.baidu.location.f"

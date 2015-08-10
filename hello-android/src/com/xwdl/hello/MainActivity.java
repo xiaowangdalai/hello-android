@@ -2,6 +2,7 @@ package com.xwdl.hello;
 
 import com.xwdl.hello.animation.property.PropertyAnimListActivity;
 import com.xwdl.hello.datastructure.DataStructureListActivity;
+import com.xwdl.hello.dialog.DialogActivity;
 import com.xwdl.hello.lbs.LbsActivity;
 
 import android.app.Activity;
@@ -18,7 +19,8 @@ public class MainActivity extends Activity {
 		"侧滑菜单",
 		"属性动画",
 		"地图",
-		"数据结构"
+		"数据结构",
+		"对话框"
 	};
 
 	@Override
@@ -54,6 +56,10 @@ public class MainActivity extends Activity {
 					
 				case 3:
 					startActivity(new Intent(MainActivity.this, DataStructureListActivity.class));
+					break;
+					
+				case 4:
+					startActivity(new Intent(MainActivity.this, DialogActivity.class));
 					break;
 
 				default:

@@ -16,8 +16,14 @@ public class ParcelableFragment extends Fragment {
 	private static final String NAME = "小往大来";
 	private static final String DESCRIPTION = "潜龙勿用";
 
-	public static final ParcelableFragment newInstace() {
-		return new ParcelableFragment();
+	public static final ParcelableFragment newInstance(MyParcelable myParcelable) {
+		ParcelableFragment pf = new ParcelableFragment();
+		
+		Bundle bundle = new Bundle();
+		bundle.putParcelable("aa", myParcelable);
+		pf.setArguments(bundle);
+		
+		return pf;
 	}
 	
 	@Override
@@ -38,7 +44,11 @@ public class ParcelableFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				
+				Bundle bd = getArguments();
+				MyParcelable mp = bd.getParcelable("aa");
+				if (mp != null) {
+					target.setText("" + mp.getData());
+				}
 			}
 		});
 		

@@ -47,12 +47,22 @@ import android.os.Parcelable;
  * 6、Parcelable接口定义
  * 
  * public interface Parcelable { 
- * //内容描述接口，基本不用管 
- * public int describeContents(); //写入接口函数，打包 
- * public void writeToParcel(Parcel dest, int flags); //读取接口，目的是要从Parcel中构造一个实现了Parcelable的类的实例处理。因为实现类在这里还是不可知的，
- * 所以需要用到模板的方式，继承类名通过模板参数传入 //为了能够实现模板参数的传入，这里定义Creator嵌入接口,
- * 内含两个接口函数分别返回单个和多个继承类实例 public interface Creator<T> { public T
- * createFromParcel(Parcel source); public T[] newArray(int size); } } 复制代码
+ * 		//内容描述接口，基本不用管 
+ * 		public int describeContents(); 
+ * 
+ * 		//写入接口函数，打包 
+ * 		public void writeToParcel(Parcel dest, int flags); 
+ * 
+ * 		//读取接口，目的是要从Parcel中构造一个实现了Parcelable的类的实例处理。因为实现类在这里还是不可知的，
+ * 		//所以需要用到模板的方式，继承类名通过模板参数传入 
+ * 		//为了能够实现模板参数的传入，这里定义Creator嵌入接口,
+ * 		//内含两个接口函数分别返回单个和多个继承类实例 
+ * 		public interface Creator<T> { 
+ * 			public T createFromParcel(Parcel source); 
+ * 			public T[] newArray(int size); 
+ * 		} 
+ * }
+ * 
  * 7、实现Parcelable步骤
  * 
  * 1）implements Parcelable
@@ -64,10 +74,11 @@ import android.os.Parcelable;
  * 
  * 4）实例化静态内部对象CREATOR实现接口Parcelable.Creator
  * 
- * public static final Parcelable.Creator<T> CREATOR 注：其中public static
- * final一个都不能少，内部对象CREATOR的名称也不能改变，必须全部大写。需重写本接口中的两个方法：createFromParcel(Parcel
- * in) 实现从Parcel容器中读取传递数据值，封装成Parcelable对象返回逻辑层，newArray(int size)
- * 创建一个类型为T，长度为size的数组，仅一句话即可（return new T[size]），供外部类反序列化本类数组使用。
+ * public static final Parcelable.Creator<T> CREATOR 
+ * 注：其中public static final一个都不能少，内部对象CREATOR的名称也不能改变，必须全部大写。
+ * 需重写本接口中的两个方法：createFromParcel(Parcel in) 实现从Parcel容器中读取传递数据值，
+ * 封装成Parcelable对象返回逻辑层，newArray(int size) 创建一个类型为T，长度为size的数组，
+ * 仅一句话即可（return new T[size]），供外部类反序列化本类数组使用。
  * 
  * 简而言之：通过writeToParcel将你的对象映射成Parcel对象，再通过createFromParcel将Parcel对象映射成你的对象。
  * 也可以将Parcel看成是一个流
@@ -76,20 +87,31 @@ import android.os.Parcelable;
  * 
  * 代码如下：
  * 
- * 复制代码 public class MyParcelable implements Parcelable { private int mData;
+ * public class MyParcelable implements Parcelable { 
+ * 		private int mData;
  * 
- * public int describeContents() { return 0; }
+ * 		public int describeContents() { return 0; }
  * 
- * public void writeToParcel(Parcel out, int flags) { out.writeInt(mData); }
+ * 		public void writeToParcel(Parcel out, int flags) { 
+ * 			out.writeInt(mData); 
+ * 		}
  * 
- * public static final Parcelable.Creator<MyParcelable> CREATOR = new
- * Parcelable.Creator<MyParcelable>() { public MyParcelable
- * createFromParcel(Parcel in) { return new MyParcelable(in); }
+ * 		public static final Parcelable.Creator<MyParcelable> CREATOR = new
+ * 			Parcelable.Creator<MyParcelable>() { 
+ * 				public MyParcelable createFromParcel(Parcel in) { 
+ * 					return new MyParcelable(in); 
+ * 				}
  * 
- * public MyParcelable[] newArray(int size) { return new MyParcelable[size]; }
- * };
+ * 				public MyParcelable[] newArray(int size) { 
+ * 					return new MyParcelable[size]; 
+ * 				}
+ * 		};
  * 
- * private MyParcelable(Parcel in) { mData = in.readInt(); } } 复制代码
+ * 		private MyParcelable(Parcel in) { 
+ * 			mData = in.readInt(); 
+ * 		} 
+ * }
+ * 
  * 8、Serializable实现与Parcelabel实现的区别
  * 
  * 1）Serializable的实现，只需要implements Serializable 即可。这只是给对象打了一个标记，系统会自动将其序列化。
@@ -111,10 +133,13 @@ import android.os.Parcelable;
  * 
  * public int getAge() { return age; }
  * 
- * public void setAge(int age) { this.age = age; } } 复制代码 2）创建Book类，实现Parcelable
+ * public void setAge(int age) { this.age = age; } }
  * 
- * 复制代码 public class Book implements Parcelable { private String bookName;
- * private String author; private int publishDate;
+ * 2）创建Book类，实现Parcelable
+ * public class Book implements Parcelable { 
+ * private String bookName;
+ * private String author; 
+ * private int publishDate;
  * 
  * public Book() {
  * 
@@ -148,6 +173,19 @@ import android.os.Parcelable;
  *           Android基础知识
  */
 public class MyParcelable implements Parcelable {
+	private int mData;
+	
+	public MyParcelable(int data) {
+		mData = data;
+	}
+
+	public MyParcelable(Parcel source) {
+		mData = source.readInt();
+	}
+	
+	public int getData() {
+		return mData;
+	}
 
 	@Override
 	public int describeContents() {
@@ -156,6 +194,21 @@ public class MyParcelable implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(mData);
 	}
+	
+	public static final Creator<MyParcelable> CREATOR = new Creator<MyParcelable>() {
+
+		@Override
+		public MyParcelable createFromParcel(Parcel source) {
+			return new MyParcelable(source);
+		}
+
+		@Override
+		public MyParcelable[] newArray(int size) {
+			return new MyParcelable[size];
+		}
+		
+	};
 
 }
