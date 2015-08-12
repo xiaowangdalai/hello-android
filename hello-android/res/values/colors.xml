@@ -6,4 +6,6 @@
     <color name="red">#ffed6766</color>
     <color name="yellow">#fff7ce52</color>
     
+    <drawable name="popupwindow_bg">#ff000000</drawable>
+    
 </resources>
