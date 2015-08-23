@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
     <color name="green">#ff54c75f</color>
     <color name="blue">#ff3290f0</color>
     <color name="red">#ffed6766</color>
     <color name="yellow">#fff7ce52</color>
     
     <drawable name="popupwindow_bg">#ff000000</drawable>
+    <drawable name="window_bg">#ffffff</drawable>
     
 </resources>

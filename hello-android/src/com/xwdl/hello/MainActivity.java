@@ -4,6 +4,7 @@ import com.xwdl.hello.animation.property.PropertyAnimListActivity;
 import com.xwdl.hello.datastructure.DataStructureListActivity;
 import com.xwdl.hello.dialog.DialogActivity;
 import com.xwdl.hello.lbs.LbsActivity;
+import com.xwdl.hello.w500.W500Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -20,7 +21,8 @@ public class MainActivity extends Activity {
 		"属性动画",
 		"地图",
 		"数据结构",
-		"对话框"
+		"对话框",
+		"SurfaceView"
 	};
 
 	@Override
@@ -60,6 +62,10 @@ public class MainActivity extends Activity {
 					
 				case 4:
 					startActivity(new Intent(MainActivity.this, DialogActivity.class));
+					break;
+					
+				case 5:
+					startActivity(new Intent(MainActivity.this, W500Activity.class));
 					break;
 
 				default:
